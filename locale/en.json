@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "Auto-rename sessions",
+    "description": "Retry model-generated session titles from the session menu."
+  }
+}
