@@ -36,6 +36,8 @@ git clone https://github.com/OldLigant/dsh-auto-rename.git
 
 ## 兼容性
 
-`peerDependencies` 仅声明已核查过接口的 DSH 精确版本：`0.1.7-rc.2`、`0.2.0-rc.1`、`0.2.0-rc.2`。这代表接口层面的兼容性检查，**不代表已在每个版本完成端到端实测**；其他版本需要重新验证后再加入支持范围。
+`peerDependencies` 声明 DSH 运行时范围 `>=0.2.0-rc.1 <0.3.0-0`。预发布版本计入匹配，因此 `0.2.0-rc.1` 及其后的同主版本小版本（如 `0.2.1-alpha.1`）无需再改声明即可加载；`0.1.7-rc.2` 及更早版本已不在支持范围内。这代表接口层面的兼容性检查，**不代表已在每个版本完成端到端实测**；范围之外的主版本需要重新验证后再放宽。
+
+`0.2.1-alpha.1` 已复核所用接口：Host 侧 `connection.fetch.register`、`sessionController.resolveAgent`、`sessionTitle.get/refresh/rename`，浏览器侧槽位 `sidebar.workspaces.session.menu.item`（含 `useMenuOpenState`）、`shell.overlay` 与 `locale.register/bind` 均未变更。
 
 插件由 Host 端的受认证请求接口 `/api/local.auto-rename.refresh` 和浏览器端的会话菜单项、页面浮层提示组成，不需要额外运行时依赖。
